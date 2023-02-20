@@ -981,6 +981,12 @@ function end(e){
 
                     (has_next && next()) ||
                     (has_prev && prev());
+                } else {
+                    var deltaX = e.pageX - startX;
+                    var deltaY = e.pageY - startY;
+                    if (Math.abs(deltaY) - Math.abs(deltaX) > screen.height / 5) {
+                        close();
+                    }
                 }
 
                 x = 0;
