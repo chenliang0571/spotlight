@@ -184,6 +184,15 @@ export function init(){
     addListener(track, "touchend", end);
     // click listener for the wrapper "track" is already covered
     //addListener(track, "click", menu);
+    addListener(track, 'gestureend', function(e) {
+        if (e.scale < 1.0) {
+            // User moved fingers closer together
+            zoom_out();
+        } else if (e.scale > 1.0) {
+            // User moved fingers further apart
+            zoom_in();
+        }
+    }, false);
 
     addListener(button, "click", function(){
 
